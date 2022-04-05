@@ -31,11 +31,11 @@ body {
 
 @media only screen and (min-width: 992px) {
     body {
-        overflow-y: hidden;
+        /* overflow-y: hidden; */
     }
 
     .ball {
-        overflow: hidden;
+        /* overflow: hidden; */
         transition: margin 1s;
         width: 600px;
         height: 525px;
