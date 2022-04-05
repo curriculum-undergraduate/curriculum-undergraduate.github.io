@@ -4,6 +4,7 @@ const passwordIcon = document.querySelectorAll(".password__icon");
 const authPassword = document.querySelectorAll(".auth__password");
 
 document.getElementsByName('password')[0].placeholder = 'your password';
+document.getElementsByName('confirm_password')[0].placeholder = 'your password';
 
 
 // change hidden password to visible password
