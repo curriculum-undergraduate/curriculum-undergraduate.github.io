@@ -1,23 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Register</title>
-</head>
-
-<body>
-
-    <!-- blue circle background -->
+<template>
+<div>
+        <!-- blue circle background -->
     <div class="d-none d-lg-block ball register bg-primary bg-gradient position-absolute rounded">
         <h3 class="fw-bolder mt-3 text-center text-white pt-4">Curriculum Undergraduate</h3>
     </div>
@@ -32,7 +15,7 @@
                     <div class="col align-self-center p-5 w-100">
                         <h3 class="fw-bolder mt-3">REGISTER HERE !</h3>
                         <p class="fw-lighter fs-6">Have an account, <span id="signUp" role="button"
-                                class="text-primary"><a href="login.html" style="text-decoration: none;">Sign
+                                class="text-primary"><a href="/" style="text-decoration: none;">Sign
                                     In</a></span></p>
                         <!-- form login section -->
                         <form action="" class="mt-5">
@@ -107,17 +90,10 @@
     <div class="d-none d-lg-block col-lg-6 col-xl-6">
         <div class="row vh-100" style="padding-top: 35%; margin-left: 130%;">
             <div class="col align-self-center text-center">
-                <img src="assets/img/welkam1.png" width="350" class="bounce" alt="">
+                <img src="../assets/welkam1.png" width="350" class="bounce" alt="">
             </div>
         </div>
     </div>
+</div>
+</template>
 
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
-</body>
-
-</html>
