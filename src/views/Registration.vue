@@ -63,7 +63,7 @@
                             </div>
                         </form>
                         <div class="separator mt-5 text-white">Or Sign up with social platforms</div>
-                        <div class="row text-center">
+                        <div class="row text-center" style="color:#ffffff;">
                             <div class="col mt-3">
                                 <a href="" class="btn btn-outline-light border-2 rounded-thumbnail"><i
                                         class="bi bi-facebook fs-5"></i></a>
@@ -97,10 +97,3 @@
 </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    this.$refs.passwordInput.placeholder = "your password";
-  }
-}
-</script>
