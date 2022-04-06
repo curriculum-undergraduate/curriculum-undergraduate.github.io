@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="d-none d-lg-block ball login bg-primary bg-gradient position-absolute rounded"
+      class="d-none d-lg-block ball login bg-primary bg-gradient position-absolute h-75 rounded"
     >
       <h3 class="fw-bolder mt-3 text-center text-white pt-4">
         Curriculum Undergraduate
@@ -121,7 +121,7 @@
     </div>
 
     <div class="d-none d-lg-block col-lg-6 col-xl-6">
-      <div class="row vh-100" style="padding-top: 30%; margin-left: -50px">
+      <div class="row vh-100" style="padding-top: 13%; margin-left: -50px">
         <div class="col align-self-center text-center">
           <img src="../assets/welkam.png" width="350" class="bounce" alt="" />
         </div>
