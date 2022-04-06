@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="d-none d-lg-block ball login bg-primary bg-gradient position-absolute h-75 rounded"
+      class="d-none d-lg-block ball login bg-gradient position-absolute h-75 rounded"
     >
       <h3 class="fw-bolder mt-3 text-center text-white pt-4">
         Curriculum Undergraduate
@@ -77,39 +77,39 @@
                 <div class="col text-center">
                   <button
                     type="submit"
-                    class="btn btn-outline-dark btn-lg rounded-pill mt-4 w-100"
+                    class="btn btn-outline-light btn-lg rounded-pill mt-4 w-100"
                   >
                     Login
                   </button>
                 </div>
               </form>
-              <div class="separator mt-5">Or Sign in with social platforms</div>
+              <div class="separator mt-5 text-white">Or Sign in with social platforms</div>
               <div class="row text-center">
                 <div class="col mt-3">
                   <a
                     href=""
-                    class="btn btn-outline-dark border-2 rounded-thumbnail"
+                    class="btn btn-outline-light border-2 rounded-thumbnail"
                     ><i class="bi bi-facebook fs-5"></i
                   ></a>
                 </div>
                 <div class="col mt-3">
                   <a
                     href=""
-                    class="btn btn-outline-dark border-2 rounded-thumbnail"
+                    class="btn btn-outline-light border-2 rounded-thumbnail"
                     ><i class="bi bi-linkedin fs-5"></i
                   ></a>
                 </div>
                 <div class="col mt-3">
                   <a
                     href=""
-                    class="btn btn-outline-dark border-2 rounded-thumbnail"
+                    class="btn btn-outline-light border-2 rounded-thumbnail"
                     ><i class="bi bi-twitter fs-5"></i
                   ></a>
                 </div>
                 <div class="col my-3">
                   <a
                     href=""
-                    class="btn btn-outline-dark border-2 rounded-thumbnail"
+                    class="btn btn-outline-light border-2 rounded-thumbnail"
                     ><i class="bi bi-google fs-5"></i
                   ></a>
                 </div>
