@@ -1,7 +1,7 @@
 <template>
 <div>
         <!-- blue circle background -->
-    <div class="d-none d-lg-block ball register bg-primary bg-gradient position-absolute h-75 rounded">
+    <div class="d-none d-lg-block ball register bg-gradient position-absolute h-75 rounded">
         <h3 class="fw-bolder mt-3 text-center text-white pt-4">Curriculum Undergraduate</h3>
     </div>
 
@@ -15,7 +15,7 @@
                     <div class="col align-self-center p-5 w-100">
                         <h3 class="fw-bolder mt-3">REGISTER HERE !</h3>
                         <p class="fw-lighter fs-6">Have an account, <span id="signUp" role="button"
-                                class="text-primary"><a href="/" style="text-decoration: none;">Sign
+                                class="text-info"><a href="/" style="text-decoration: none;">Sign
                                     In</a></span></p>
                         <!-- form login section -->
                         <form action="" class="mt-5">
@@ -34,17 +34,17 @@
                             <div class="mb-4">
                                 <label for="InputPassword" class="form-label">Password</label>
                                 <div class="d-flex position-relative">
-                                    <input type="password" id="InputPassword" name="password"
+                                <input :type="show === true ? 'text' : 'password'" id="InputPassword" name="password" placeholder="your password"
                                         class="form-control text-indent auth__password shadow-sm bg-grey-light border-0 rounded-pill fw-lighter fs-7 p-3">
-                                    <span class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash"></span>
+                                <span class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash"  v-if="show" @click="show = !show"></span>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <label for="InputConfirmPassword" class="form-label">Confirm Password</label>
                                 <div class="d-flex position-relative">
-                                    <input type="password" id="InputConfirmPassword" name="confirm_password"
+                                <input :type="show === true ? 'text' : 'password'" id="InputConfirmPassword" name="confirm_password" placeholder="confirm password"
                                         class="form-control text-indent auth__password shadow-sm bg-grey-light border-0 rounded-pill fw-lighter fs-7 p-3">
-                                    <span class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash"></span>
+                                    <span class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash" v-if="show" @click="show = !show"></span>
                                 </div>
                             </div>
                             <div class="pt-3" style="margin-bottom: -10px;">
@@ -59,25 +59,25 @@
                             </div>
                             <div class="col text-center">
                                 <button type="submit"
-                                    class="btn btn-outline-dark btn-lg rounded-pill mt-4 w-100">Register</button>
+                                    class="btn btn-outline-light btn-lg rounded-pill mt-4 w-100">Register</button>
                             </div>
                         </form>
-                        <div class="separator mt-5">Or Sign up with social platforms</div>
+                        <div class="separator mt-5 text-white">Or Sign up with social platforms</div>
                         <div class="row text-center">
                             <div class="col mt-3">
-                                <a href="" class="btn btn-outline-dark border-2 rounded-thumbnail"><i
+                                <a href="" class="btn btn-outline-light border-2 rounded-thumbnail"><i
                                         class="bi bi-facebook fs-5"></i></a>
                             </div>
                             <div class="col mt-3">
-                                <a href="" class="btn btn-outline-dark border-2 rounded-thumbnail"><i
+                                <a href="" class="btn btn-outline-light border-2 rounded-thumbnail"><i
                                         class="bi bi-linkedin fs-5"></i></a>
                             </div>
                             <div class="col mt-3">
-                                <a href="" class="btn btn-outline-dark border-2 rounded-thumbnail"><i
+                                <a href="" class="btn btn-outline-light border-2 rounded-thumbnail"><i
                                         class="bi bi-twitter fs-5"></i></a>
                             </div>
                             <div class="col my-3">
-                                <a href="" class="btn btn-outline-dark border-2 rounded-thumbnail"><i
+                                <a href="" class="btn btn-outline-light border-2 rounded-thumbnail"><i
                                         class="bi bi-google fs-5"></i></a>
                             </div>
                         </div>
@@ -97,3 +97,10 @@
 </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    this.$refs.passwordInput.placeholder = "your password";
+  }
+}
+</script>

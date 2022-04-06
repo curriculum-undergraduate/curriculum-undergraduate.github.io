@@ -19,8 +19,8 @@
               <h3 class="fw-bolder mt-3">WELCOME BACK !</h3>
               <p class="fw-lighter fs-6">
                 Don't have an account,
-                <span id="signUp" role="button" class="text-primary"
-                  ><a href="register" style="text-decoration: none"
+                <span id="signUp" role="button" class="text-light"
+                  ><a href="register" style="text-decoration: none;"
                     >Sign Up</a
                   ></span
                 >
@@ -39,15 +39,15 @@
                 <div class="mb-4">
                   <label for="InputPassword" class="form-label">Password</label>
                   <div class="d-flex position-relative">
-                    <input
-                      type="password"
-                      id="InputPassword"
+                  <input
+                      :type="show === true ? 'text' : 'password'"
+                      id="password"
                       name="password"
                       class="form-control text-indent auth__password shadow-sm bg-grey-light border-0 rounded-pill fw-lighter fs-7 p-3"
                       ref="passwordInput"
                     />
                     <span
-                      class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash"
+                      class="password__icon text-primary fs-4 fw-bold bi bi-eye-slash" v-if="show" @click="show = !show"
                     ></span>
                   </div>
                 </div>
