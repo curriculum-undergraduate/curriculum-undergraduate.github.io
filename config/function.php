@@ -71,7 +71,7 @@ function register_user()
                                else
                                    {
                                        $hash = md5($password);
-                                       $sql = "INSERT INTO user (user_id, user_username, user_email, user_password) VALUES(' ','$username','$email','$hash')";
+                                       $sql = "INSERT INTO user (user_id, user_username, user_email, user_password) VALUES(NULL,'$username','$email','$hash')";
                                        $data = mysqli_query($conn, $sql);
 
                                        if($data)
