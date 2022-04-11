@@ -22,13 +22,14 @@ register_user();
                         <p class="fw-lighter fs-6">Have an account, <span id="signUp" role="button"
                                 class="text-info"><a href="/" style="text-decoration: none; color: white;" class="fw-bold">Sign
                                     In</a></span></p>
-                        <!-- form login section -->
-                        <form method="post" class="mt-5">
+                        
                         <?php
                         if(isset($_SESSION['MESSAGE']))
                         {
                             display_message();
                         }?>
+                        <!-- form login section -->
+                        <form method="post" class="mt-5">
                             <div class="mb-3">
                                 <label for="InputName" class="form-label">Name</label>
                                 <input type="text" id="InputName" name="username"
