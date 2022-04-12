@@ -20,7 +20,7 @@ register_user();
                     <div class="col align-self-center p-5 w-100">
                         <h3 class="fw-bolder mt-3">REGISTER HERE !</h3>
                         <p class="fw-lighter fs-6">Have an account, <span id="signUp" role="button"
-                                class="text-info"><a href="/" style="text-decoration: none; color: white;" class="fw-bold">Sign
+                                class="text-info"><a href="login.php" style="text-decoration: none; color: white;" class="fw-bold">Sign
                                     In</a></span></p>
                         
                         <?php

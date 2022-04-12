@@ -23,7 +23,7 @@ login_user();
               <p class="fw-lighter fs-6">
                 Don't have an account,
                 <span id="signUp" role="button" class="text-light"
-                  ><a href="register" style="text-decoration: none"
+                  ><a href="register.php" style="text-decoration: none; color: white;" class="fw-bold"
                     >Sign Up</a
                   ></span>
               </p>
@@ -88,7 +88,7 @@ login_user();
                     </div>
                     <div class="col">
                       <div class="text-center">
-                        <a href="/forgot-password" class="mt-5" style="text-decoration: none"
+                        <a href="forgotpassword.php" class="mt-5" style="text-decoration: none; color: white;"
                           >Forgot Password?</a
                         >
                       </div>
@@ -147,7 +147,7 @@ login_user();
     <div class="d-none d-lg-block col-lg-6 col-xl-6">
       <div class="row vh-100" style="padding-top: 13%; margin-left: -50px">
         <div class="col align-self-center text-center">
-          <!-- <img src="assets/img/laptop.png" width="300" class="bounce" alt="" />-->
+          <img src="assets/images/laptop2.png" width="300" class="bounce" alt=""/>
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@
 
 body {
   font-family: "Poppins", sans-serif !important;
-  background-image: url("bg.png");
+  background-image: url("../img/bg.png");
 }
 
-p, h1, h2, h3, h4, h5, label, row {
+p, h1, h2, h3, h4, label, row {
   color:#ffffff;
 }
 
@@ -20,7 +20,7 @@ p, h1, h2, h3, h4, h5, label, row {
 .password__icon {
   position: absolute;
   right: 0;
-  padding: 10px 20px;
+  padding: 15px 20px;
   cursor: pointer;
 }
 
@@ -86,10 +86,6 @@ p, h1, h2, h3, h4, h5, label, row {
     margin-left: -7%;
   }
 
-  .forget-auth-login{
-    margin-left: 25%;
-  }
-
   /* register form active */
   .register__form.active {
     margin-left: 10% !important;
@@ -100,11 +96,6 @@ p, h1, h2, h3, h4, h5, label, row {
   .login__form.active {
     opacity: 1;
     margin-left: 10% !important;
-  }
-
-  .forget__from.active {
-    margin-left: 25% !important;
-    opacity: 1;
   }
 }
 
@@ -167,7 +158,7 @@ p, h1, h2, h3, h4, h5, label, row {
 .separator::after {
   content: "";
   flex: 1;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid white;
 }
 
 .separator:not(:empty)::before {
