@@ -29,14 +29,12 @@ login_user();
               </p>
 
               <?php
-
-                if(isset($_SESSION['MESSAGE']))
-                {
-                    display_message();
-                }
-                
-
-                ?>
+              if(isset($_SESSION['MESSAGE']))
+              { ?>
+              <div class="alert alert-info" role="alert">
+                <?=display_message()?>
+              </div>
+              <?php } ?>
 
               <!-- form login section -->
               <form method="post" action="" class="mt-5">

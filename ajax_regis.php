@@ -73,7 +73,7 @@ register_user();
                             <div class="col text-center">
                                 <button type="submit"
                                     class="btn btn-outline-light btn-lg rounded-pill mt-4 w-100" 
-                                    name="btn_register" onclick="CheckLength('InputPassword')">Register</button>
+                                    name="btn_register">Register</button>
                             </div>
                         </form>
                         <div class="separator mt-5 text-white">Or Sign up with social platforms</div>

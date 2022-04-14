@@ -36,6 +36,21 @@ function register_user()
        $password = mysqli_real_escape_string($conn,$_POST['password']);
        $cpassword = mysqli_real_escape_string($conn,$_POST['cpassword']);
 
+       $uppercase = preg_match('@[A-Z]@', $password);
+       $lowercase = preg_match('@[a-z]@', $password);
+       $number    = preg_match('@[0-9]@', $password);
+       $specialChars = preg_match('@[^\w]@', $password);
+
+       if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8)
+       {
+        $error="<div>Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.</div>";
+        set_message($error);
+       }
+    else
+    {
+        $error="<div>Strong password.</div>";
+        set_message($error);
+
        if(empty($username) || empty($email) || empty($password) || empty($cpassword))
        {
            $error = "<div>Please Fill in the Blanks</div>";
@@ -70,14 +85,15 @@ function register_user()
                                }
                                else
                                    {
-                                       $hash = md5($password);
-                                       $sql = "INSERT INTO user (user_id, user_email, user_password, user_full_name, user_username, user_dob, user_address, user_gender, user_phone, user_profile_picture, user_social_media, user_role) VALUES (NULL, '$email', '$hash', '', '$username', NULL, NULL, '', '', NULL, NULL, '')";
+                                       $hash = SHA1($password);
+                                       $sql = "INSERT INTO user (user_id, role_id, user_email, user_password, user_full_name, user_username, user_dob, user_address, user_gender, user_phone, user_profile_picture, user_social_media) VALUES (NULL, '3', '$email', '$hash', '', '$username', NULL, NULL, NULL, NULL, NULL, NULL)";
                                        $data = mysqli_query($conn, $sql);
 
                                        if($data)
                                        {
                                            $error = "<div> Record Successfully Registered : ) </div>";
                                            set_message($error);
+                                           header('Location: login.php');
                                        }
                                        else
                                            {
@@ -88,8 +104,11 @@ function register_user()
                            }
                    }
            }
-   }
+        }
+    }
 }
+
+
 
 function login_user()
    {
@@ -112,7 +131,7 @@ function login_user()
             if($row=mysqli_fetch_assoc($result))
             {
                 $db_pass = $row['user_password'];
-                if(md5($password)==$db_pass)
+                if(SHA1($password)==$db_pass)
                 {
                     header("location: ./index.php");
                     $_SESSION['ID']=$row['user_id'];
@@ -133,6 +152,4 @@ function login_user()
         }
     }
 }
-
-
 ?>
