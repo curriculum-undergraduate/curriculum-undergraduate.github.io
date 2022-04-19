@@ -40,19 +40,19 @@ function register_user()
        $lowercase = preg_match('@[a-z]@', $password);
        $number    = preg_match('@[0-9]@', $password);
 
-       if(empty($username) || empty($email) || empty($password) || empty($cpassword))
-       {
-           $error = "<div>Please Fill in the Blanks</div>";
-           set_message($error);
-       }
-       else
-           {
-            if(!$uppercase || !$lowercase || !$number || strlen($password) < 8)
-            {
-             $error="<div>Password should be at least 8 characters in length and should include at least one upper case letter, one number.</div>";
-             set_message($error);
-            }
-            else{
+    //    if(empty($username) || empty($email) || empty($password) || empty($cpassword))
+    //    {
+    //        $error = "<div>Please Fill in the Blanks</div>";
+    //        set_message($error);
+    //    }
+    //    else
+        //    {
+        //     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8)
+        //     {
+        //      $error="<div>Password should be at least 8 characters in length and should include at least one upper case letter, one number.</div>";
+        //      set_message($error);
+        //     }
+        //     else{
                 
                if($password!=$cpassword)
                {
@@ -101,8 +101,8 @@ function register_user()
                    }
            }
         }
-    }
-}
+    
+
 
 
 
@@ -114,13 +114,13 @@ function login_user()
         $email = mysqli_real_escape_string($conn,$_POST['email']);
         $password = mysqli_real_escape_string($conn,$_POST['password']);
 
-        if(empty($email)  || empty($password) )
-        {
-            $error = "<div> Please Fill in the Blanks</div>";
-            set_message($error);
-        }
-        else
-        {
+        // if(empty($email)  || empty($password) )
+        // {
+        //     $error = "<div> Please Fill in the Blanks</div>";
+        //     set_message($error);
+        // }
+        // else
+        // {
             $query = "SELECT * FROM user WHERE user_username='$email' OR user_email='$email'";
             $result = mysqli_query($conn,$query);
 
@@ -147,5 +147,4 @@ function login_user()
 
         }
     }
-}
 ?>
