@@ -23,4 +23,4 @@ require_once 'snippets/Header.php' ;
       </div>
     </div>
 
-<?php require_once 'inc/Footer.php';?>
+<?php require_once 'snippets/Footer.php';?>

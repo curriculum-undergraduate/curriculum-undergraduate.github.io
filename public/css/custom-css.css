@@ -1,5 +1,6 @@
 body{
-    background-image: url("bg.png");
+    background-image: url("background.jpg");
+    background-size: cover;
 }
 
 h2,h3, label{

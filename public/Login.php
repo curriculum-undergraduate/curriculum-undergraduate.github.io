@@ -43,7 +43,7 @@ userLogin();
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black" required>
                 </div>
                 <div class="flex">
-                    <button class="w-full px-6 py-2 mt-4 text-white bg-[#b6833b] rounded-full hover:bg-[#c5985f]" name="btn_login">Sign In</button>
+                    <button class="w-full px-6 py-2 mt-4 text-white bg-[#b6833b] rounded-full hover:bg-[#c5985f]" name="submit">Sign In</button>
                 </div>
 
                 <div class="flex items-center justify-between mt-6">
@@ -68,8 +68,8 @@ userLogin();
         </form>
         </div>
         <div class="hidden lg:flex lg:w-1/2 my-auto p-36">
-            <img src="img/laptop2.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top">
+            <img src="img/laptop.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top">
         </div>
     </div>
 
-<?php require_once 'inc/Footer.php';?>
+<?php require_once 'snippets/Footer.php';?>

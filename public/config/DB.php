@@ -1,6 +1,6 @@
 <?php
 $host = "103.129.221.147";
-$port = "3308";
+$port = "3306";
 $database = "lumintu_db";
 $username = "admin";
 $password = "rahasia";

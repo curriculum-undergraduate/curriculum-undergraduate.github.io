@@ -37,7 +37,7 @@
                             <p>User Email: <span><?php echo $row['user_email'] ?></span></p>
                         </div>
                         <div class="card-footer">
-                            <a href="login.php" class="btn btn-danger float-end">Logout</a>
+                            <a href="Login.php" class="btn btn-danger float-end">Logout</a>
                         </div>
                     </div>
                 </div>

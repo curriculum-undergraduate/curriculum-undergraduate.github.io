@@ -18,60 +18,68 @@ function userRegister()
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
+        $confirm_password = htmlspecialchars($_POST['confirm_password']);
 
         // Menghilangkan backslash
         $username = stripslashes($username);
         $email = stripslashes($email);
         $password = stripslashes($password);
+        $confirm_password = stripslashes($confirm_password);
 
         // Mengamankan dari SQL Injection
         $username = mysqli_real_escape_string($conn, $username);
         $email = mysqli_real_escape_string($conn, $email);
         $password = mysqli_real_escape_string($conn, $password);
+        $confirm_password = mysqli_real_escape_string($conn, $confirm_password);
 
         // Mengecek apakah form yang diinput kosong atau tidak
-        if (!empty(trim($username)) && !empty(trim($email)) && !empty(trim($password))) {
+        if (!empty(trim($username)) && !empty(trim($email)) && !empty(trim($password)) && !empty(trim($confirm_password))) {
+            if ($password == $confirm_password) {
 
-            // select data berdasarkan input dari user
-            $query = "SELECT * FROM user WHERE user_username='$username' OR user_email='$email'";
-            $result = mysqli_query($conn, $query);
-            $rows = mysqli_num_rows($result);
-
-            // Memeriksa apakah email dan username sudah terdaftar atau belum
-            $length = 0;
-            if ($rows != $length) {
-                $messages = "Akun dengan username/email sudah ada";
-            }
-            else {
-
-                // Mengecek lenth password harus lebih dari 8 karakter
-                $length = 8;
-                if (strlen($password) < $length) {
-                    $messages = "Password harus minimal 8 karakter";
+                // select data berdasarkan input dari user
+                $query = "SELECT * FROM user WHERE user_username='$username' OR user_email='$email'";
+                $result = mysqli_query($conn, $query);
+                $rows = mysqli_num_rows($result);
+    
+                // Memeriksa apakah email dan username sudah terdaftar atau belum
+                $length = 0;
+                if ($rows != $length) {
+                    $messages = "Akun dengan username/email sudah ada";
                 }
                 else {
-                    // Menambahkan user/akun baru
-                    $hash = sha1($password);
-                    $role_id = 3;
-                    $status_id = 0;
-                    $query = "INSERT INTO user (user_id, role_id, status_id, user_email, user_password, user_full_name, user_username, user_dob, user_address, user_gender, user_phone, user_profile_picture) VALUES (NULL, $role_id, $status_id, '$email', '$hash', '', '$username', NULL, NULL, NULL, NULL, NULL)";
-                    $result = mysqli_query($conn, $query);
-
-                    // Jika akun berhasil didaftarkan, maka system akan mengalihkan ke Login Page
-                    if ($result) {
-                        $messages = "Akun berhasil terdaftar!";
-                        header('Location: Login.php');
+    
+                    // Mengecek lenth password harus lebih dari 8 karakter
+                    $length = 8;
+                    if (strlen($password) < $length) {
+                        $messages = "Password harus minimal 8 karakter";
                     }
                     else {
-                        $messages = mysqli_error($conn);
+                        // Menambahkan user/akun baru
+                        $hash = sha1($password);
+                        $role_id = 3;
+                        $status_id = 0;
+                        $query = "INSERT INTO user (user_id, role_id, status_id, user_email, user_password, user_full_name, user_username, user_dob, user_address, user_gender, user_phone, user_profile_picture) VALUES (NULL, $role_id, $status_id, '$email', '$hash', '', '$username', NULL, NULL, NULL, NULL, NULL)";
+                        $result = mysqli_query($conn, $query);
+    
+                        // Jika akun berhasil didaftarkan, maka system akan mengalihkan ke Login Page
+                        if ($result) {
+                            $messages = "Akun berhasil terdaftar!";
+                            header('Location: Login.php');
+                        }
+                        else {
+                            $messages = mysqli_error($conn);
+                        }
                     }
+    
                 }
-
+    
             }
-
-        }
+            else {
+                $messages = "Password tidak sama";
+            }
+        } 
         else {
-            $messages = "Form wajib diisi ya!";
+            $messages = "Harus dilengkapi";
         }
 
 
