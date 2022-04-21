@@ -1,8 +1,11 @@
 
 <?php 
-require_once 'snippets/Header.php' ;
+require_once '../snippets/Header.php' ;
 ?>
 
+    <link href="../assets/css/custom-css.css" rel="stylesheet" />
+  </head>
+<body>
 <div class="flex items-center justify-center min-h-screen px-10">
     <div class="px-8 py-8 text-left bg-white rounded-lg md:w-1/2 lg:w-1/2">
         <h3 class="text-2xl font-bold text-center text-black">Forgot Password</h3>
@@ -27,4 +30,4 @@ require_once 'snippets/Header.php' ;
       </div>
     </div>
 
-<?php require_once 'snippets/Footer.php';?>
+<?php require_once '../snippets/Footer.php';?>

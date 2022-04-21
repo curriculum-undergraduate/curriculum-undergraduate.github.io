@@ -1,7 +1,7 @@
 <?php
 
-    require_once 'config/Function.php';
-    require_once 'config/DB.php';
+    require_once '../config/Function.php';
+    require_once '../config/DB.php';
 
     if(!isset($_SESSION['EMAIL']))
     {

@@ -1,10 +1,13 @@
 <?php 
-require_once 'snippets/Header.php' ;
-require_once 'config/Function.php';
+require_once '../snippets/Header.php' ;
+require_once '../config/Function.php';
 // Function Login User
 userLogin();
 ?>
 
+    <link href="../assets/css/custom-css.css" rel="stylesheet" />
+  </head>
+<body>
     <div class="container px-8 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0">
         <div class="lg:p-16 lg:mt-8 lg:flex-1">
         <h2 class="text-4xl font-bold text-white tracking-wider sm:text-4xl">
@@ -68,8 +71,8 @@ userLogin();
         </form>
         </div>
         <div class="hidden lg:flex lg:w-1/2 my-auto p-36">
-            <img src="img/laptop.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top">
+            <img src="../assets/img/laptop.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top">
         </div>
     </div>
 
-<?php require_once 'snippets/Footer.php';?>
+<?php require_once '../snippets/Footer.php';?>

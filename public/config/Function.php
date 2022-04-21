@@ -38,6 +38,7 @@ function userRegister()
 
                 // select data berdasarkan input dari user
                 $query = "SELECT * FROM user WHERE user_username='$username' OR user_email='$email'";
+                $query = "";
                 $result = mysqli_query($conn, $query);
                 $rows = mysqli_num_rows($result);
     
