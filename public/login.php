@@ -64,7 +64,7 @@ login_user();
                     </div>
                     
                 <div class="text-sm">
-                    <a href="forgot-pass.php" class="font-medium text-white hover:underline"> Forgot your password? </a>
+                    <a href="forgotpassword.php" class="font-medium text-white hover:underline"> Forgot your password? </a>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@ login_user();
         </form>
         </div>
         <div class="hidden lg:flex lg:w-1/2 my-auto p-36">
-            <img src="img/laptop2.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top">
+            <img src="img/laptop.png" class="animate-bounce-slow lg:mt-10 lg:h-full lg:w-80 lg:object-scale-down lg:object-top" alt="laptop">
         </div>
     </div>
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>

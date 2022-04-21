@@ -84,4 +84,5 @@ register_user();
     </div>
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </html>
