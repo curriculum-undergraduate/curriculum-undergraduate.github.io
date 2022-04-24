@@ -3,9 +3,10 @@ require_once '../snippets/Header.php' ;
 require_once '../config/Function.php';
 // Function Login User
 userLogin();
+
 ?>
 
-    <link href="../assets/css/custom-css.css" rel="stylesheet" />
+    <link href="../assets/css/custom-auth.css" rel="stylesheet" />
   </head>
 <body>
     <div class="container px-8 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0">
@@ -38,7 +39,7 @@ userLogin();
                 <div class="mt-4">
                     <label class="block text-white" for="email">Email<label>
                             <input type="text" placeholder="name@gmail.com" name="email"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black" required>
+                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black" required>                                
                 </div>
                 <div class="mt-4">
                     <label class="block text-white">Password<label>

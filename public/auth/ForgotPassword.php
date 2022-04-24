@@ -3,7 +3,7 @@
 require_once '../snippets/Header.php' ;
 ?>
 
-    <link href="../assets/css/custom-css.css" rel="stylesheet" />
+    <link href="../assets/css/custom-auth.css" rel="stylesheet" />
   </head>
 <body>
 <div class="flex items-center justify-center min-h-screen px-10">

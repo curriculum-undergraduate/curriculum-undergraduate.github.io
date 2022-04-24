@@ -5,7 +5,7 @@ require_once '../config/Function.php';
 userRegister()
 ?>
 
-    <link href="../assets/css/custom-css.css" rel="stylesheet" />
+    <link href="../assets/css/custom-auth.css" rel="stylesheet" />
   </head>
 <body>
     <div class="container px-8 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0">
@@ -37,25 +37,27 @@ userRegister()
             <div class="mt-5">
                 <div>
                     <label class="block" for="Name">Username<label>
-                            <input type="text" placeholder="Username" name="username"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
+                    <input type="text" placeholder="Username" name="username"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
+                    <span class="text-xs text-red-400"></span>
                 </div>
                 <div class="mt-4">
                     <label class="block" for="email">Email<label>
-                            <input type="text" placeholder="name@gmail.com" name="email"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
+                    <input type="text" placeholder="name@gmail.com" name="email"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
                 </div>
                 <div class="mt-4">
                     <label class="block" for="password">Password<label>
-                            <input type="password" placeholder="Password" name="password"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
+                    <input type="password" placeholder="Password" name="password"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
                 </div>
                 <div class="mt-4">
                     <label class="block" for="cpasssword">Confirm Password<label>
-                            <input type="password" placeholder="Password" name="confirm_password"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
+                    <input type="password" placeholder="Password" name="confirm_password"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 text-black required:">
                 </div>
-                <!-- <span class="text-xs text-red-400">Password must be same!</span> -->
+                <br>
+                <!-- <span class="text-white">Dengan mendaftar, kamu setuju dengan syarat dan ketentuan kami </span> -->
                 <div class="flex mt-3">
                     <button class="w-full px-6 py-2 mt-4 text-white bg-[#b6833b] rounded-full hover:bg-[#c5985f]" name="submit"  onclick="CheckLength('InputPassword')">Create
                         Account</button>

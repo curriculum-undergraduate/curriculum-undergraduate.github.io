@@ -1,5 +1,13 @@
 <?php
     require_once '../snippets/Header.php' ;
+
+    require_once '../config/Function.php';
+    require_once '../config/DB.php';
+
+    if (!isset($_SESSION['EMAIL'])) 
+    {
+        header("Location: ../auth/Login.php");
+    }
 ?>
 
     <!-- Font -->

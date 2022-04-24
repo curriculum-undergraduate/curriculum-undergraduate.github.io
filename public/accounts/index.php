@@ -1,5 +1,19 @@
 <?php
-require_once '../snippets/Header.php';
+    require_once '../snippets/Header.php';
+
+    require_once '../config/Function.php';
+    require_once '../config/DB.php';
+
+    if (!isset($_SESSION['EMAIL'])) 
+    {
+        header("Location: ../auth/Login.php");
+    }
+
+    $email = $_SESSION['EMAIL'];
+    $query = "SELECT * FROM user WHERE user_email='$email'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+
 ?>
 
 <!-- Font -->
@@ -70,7 +84,7 @@ require_once '../snippets/Header.php';
             <!-- Header / Profile -->
             <div class="flex items-center gap-x-4 justify-end">
                 <img class="w-10" src="../assets/icons/default_profile.svg" alt="Profile Image">
-                <p class="text-dark-green font-semibold">Admin</p>
+                <p class="text-dark-green font-semibold"><?php echo strtoupper($row['user_username']) ?></p>
             </div>
 
             <!-- Breadcrumb -->
@@ -86,7 +100,13 @@ require_once '../snippets/Header.php';
                     <div class="text-center py-10">
                         <img src="../assets/img/user.jpg" alt="" class="w-40 rounded-full mx-auto">
                         <p class="text-gray-500">Student</p>
-                        <h3 class="text-xl">Thomas Mueller</h3>
+                        <h3 class="text-xl">
+                            <?php if ($row['user_first_name'] != '') : ?>
+                                <?php echo strtoupper($row['user_first_name']) ?>
+                            <?php else : ?>
+                                <?php echo strtoupper($row['user_username']) ?>
+                            <?php endif; ?>
+                        </h3>
                         <div class="mt-11">
                             <a href="#">
                                 <i class="fab fa-facebook-square text-neutral-800 text-3xl sm:text-4xl"></i>
@@ -106,17 +126,17 @@ require_once '../snippets/Header.php';
                             <div class="mb-4 border-b border-gray-200">
                                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab"
                                     data-tabs-toggle="#myTabContent" role="tablist">
-                                    <li class="mr-2" role="presentation">
-                                        <button class="inline-block p-4 rounded-t-lg border-b-2" id="profile-tab"
-                                            data-tabs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                            aria-selected="false">Course</button>
-                                    </li>
-                                    <li class="sm:mr-2" role="presentation">
+                                    <li class="sm:ml-2" role="presentation">
                                         <button
                                             class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                                             id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
                                             aria-controls="dashboard" aria-selected="false">Edit
                                             Profile</button>
+                                    </li>
+                                    <li class="mr-2" role="presentation">
+                                        <button class="inline-block p-4 rounded-t-lg border-b-2" id="profile-tab"
+                                            data-tabs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                            aria-selected="false">Course</button>
                                     </li>
                                 </ul>
                             </div>
@@ -179,72 +199,74 @@ require_once '../snippets/Header.php';
                                 <div class="hidden p-4 2xl:bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard"
                                     role="tabpanel" aria-labelledby="dashboard-tab">
 
-                                    <div class="grid sm:grid-cols-2 grid-cols-1 gap-4">
-                                        <div class="mb-6">
-                                            <label for="firstName"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First
-                                                name</label>
-                                            <input type="text" id="firstName"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="First name" required>
+                                    <form action="" method="post">
+                                        <div class="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                                            <div class="mb-6">
+                                                <label for="firstName"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First
+                                                    name</label>
+                                                <input type="text" id="firstName"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    placeholder="First name" required>
+                                            </div>
+                                            <div class="mb-6">
+                                                <label for="lastName"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last
+                                                    name</label>
+                                                <input type="text" id="lastName"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    placeholder="Last name" required>
+                                            </div>
+                                            <div class="mb-6">
+                                                <label for="emailAddress"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email
+                                                    Address</label>
+                                                <input type="email" id="emailAddress"
+                                                    class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400""
+                                                placeholder=" mail@example.com" required>
+                                                <p class="mt-2 text-sm text-red-500 dark:text-red-500"><span
+                                                        class="font-medium">Your must,</span> Verification This Email!
+                                                </p>
+                                            </div>
+                                            <div class="mb-6">
+                                                <label for="dateOfBirth"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date
+                                                    of
+                                                    Birth</label>
+                                                <input type="date" id="dateOfBirth"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    required>
+                                            </div>
+                                            <div class="mb-6">
+                                                <label for="gender"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
+                                                <select id="countries"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    <option>Laki-laki</option>
+                                                    <option>Perempuan</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-6">
+                                                <label for="phoneNumber"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
+                                                <input type="tel" id="phoneNumber"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    placeholder="(+62) 012 3456 789" required>
+                                            </div>
                                         </div>
                                         <div class="mb-6">
-                                            <label for="lastName"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last
-                                                name</label>
-                                            <input type="text" id="lastName"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Last name" required>
+                                            <label for="alamatDomisili"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alamat
+                                                Domisili</label>
+                                            <textarea id="alamatDomisili" rows="4"
+                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Jl. Jenderal Sudirman..." required></textarea>
                                         </div>
-                                        <div class="mb-6">
-                                            <label for="emailAddress"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email
-                                                Address</label>
-                                            <input type="email" id="emailAddress"
-                                                class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400""
-                                            placeholder=" mail@example.com" required>
-                                            <p class="mt-2 text-sm text-red-500 dark:text-red-500"><span
-                                                    class="font-medium">Your must,</span> Verification This Email!
-                                            </p>
+                                        <div class="mb-6 text-right">
+                                            <button type="submit"
+                                                class="sm:w-32 text-white bg-[#DDB07F] hover:bg-[#bd9161] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
                                         </div>
-                                        <div class="mb-6">
-                                            <label for="dateOfBirth"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date
-                                                of
-                                                Birth</label>
-                                            <input type="date" id="dateOfBirth"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                required>
-                                        </div>
-                                        <div class="mb-6">
-                                            <label for="gender"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
-                                            <select id="countries"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                <option>Laki-laki</option>
-                                                <option>Perempuan</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-6">
-                                            <label for="phoneNumber"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
-                                            <input type="tel" id="phoneNumber"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="(+62) 012 3456 789" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-6">
-                                        <label for="alamatDomisili"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alamat
-                                            Domisili</label>
-                                        <textarea id="alamatDomisili" rows="4"
-                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Jl. Jenderal Sudirman..." required></textarea>
-                                    </div>
-                                    <div class="mb-6 text-right">
-                                        <button type="submit"
-                                            class="sm:w-32 text-white bg-[#DDB07F] hover:bg-[#bd9161] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                                    </div>
+                                    </form>
 
                                 </div>
                             </div>

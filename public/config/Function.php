@@ -11,6 +11,7 @@ $validate = '';
 function userRegister()
 {
     global $conn, $messages;
+    if (isset($_SESSION['EMAIL'])) header('Location: ../accounts/index.php');
 
     if (isset($_POST['submit'])) {
 
@@ -38,17 +39,13 @@ function userRegister()
 
                 // select data berdasarkan input dari user
                 $query = "SELECT * FROM user WHERE user_username='$username' OR user_email='$email'";
-                $query = "";
                 $result = mysqli_query($conn, $query);
                 $rows = mysqli_num_rows($result);
     
                 // Memeriksa apakah email dan username sudah terdaftar atau belum
                 $length = 0;
-                if ($rows != $length) {
-                    $messages = "Akun dengan username/email sudah ada";
-                }
-                else {
-    
+                if ($rows == $length) {
+
                     // Mengecek lenth password harus lebih dari 8 karakter
                     $length = 8;
                     if (strlen($password) < $length) {
@@ -59,19 +56,22 @@ function userRegister()
                         $hash = sha1($password);
                         $role_id = 3;
                         $status_id = 0;
-                        $query = "INSERT INTO user (user_id, role_id, status_id, user_email, user_password, user_full_name, user_username, user_dob, user_address, user_gender, user_phone, user_profile_picture) VALUES (NULL, $role_id, $status_id, '$email', '$hash', '', '$username', NULL, NULL, NULL, NULL, NULL)";
+                        $query = "INSERT INTO user (user_id, role_id, status_id, user_email, user_password, user_username, user_first_name, user_last_name, user_dob, user_address, user_gender, user_phone, user_profile_picture) VALUES (NULL, $role_id, $status_id, '$email', '$hash', '$username', NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
                         $result = mysqli_query($conn, $query);
     
                         // Jika akun berhasil didaftarkan, maka system akan mengalihkan ke Login Page
                         if ($result) {
-                            $messages = "Akun berhasil terdaftar!";
                             header('Location: Login.php');
                         }
                         else {
                             $messages = mysqli_error($conn);
                         }
-                    }
-    
+                    }                    
+                }
+                else {
+
+                    $messages = "Akun dengan username/email sudah ada";  
+
                 }
     
             }
@@ -92,7 +92,7 @@ function userLogin()
 {
 
     global $conn, $messages;
-    // if (isset($_SESSION['email'])) header('Location: index.php');
+    if (isset($_SESSION['EMAIL'])) header('Location: ../accounts/index.php');
 
     if (isset($_POST['submit'])) {
 
@@ -115,8 +115,16 @@ function userLogin()
             // Mengecek credentials akun yang diinput user 
             $hash = $data['user_password'];
             if ($password == $hash) {
-                $_SESSION['EMAIL'] = $email;
-                header('Location: Index.php');
+                
+                // Mengecek role user dan alihkan sesuai rolenya
+                if ($data['role_id'] == 1) {
+                    $_SESSION['EMAIL'] = $email;
+                    header('Location: ../admin/index.php');
+                } else {
+                    $_SESSION['EMAIL'] = $email;
+                    header('Location: ../accounts/index.php');
+                }
+
             }
             else {
                 $messages = 'Email atau password salah, silahkan periksa kembali.';
@@ -130,3 +138,4 @@ function userLogin()
     }
 
 }
+
